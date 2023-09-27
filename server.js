@@ -21,7 +21,7 @@ const storage = multer.diskStorage({
     filename: (req, file, cb) => {
        cb(null, Date.now() + path.extname(file.originalname)); // Adding a timestamp before the file's original name
     }
- });
+});
  
 const upload = multer({ storage: storage });
 
@@ -51,12 +51,13 @@ app.post('/upload', upload.single('image'), (req, res) => {
 
 app.get('/', (req, res) => {
     res.render('index', { images: images });
- });
- 
+});
+
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // ============= Serving =============
 
-app.listen(port, () => {
-   console.log(`Server started on http://localhost:${port}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server started on http://localhost:${PORT}`);
 });
