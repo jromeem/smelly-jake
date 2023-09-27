@@ -1,0 +1,19 @@
+<div class="contain">
+
+   <h2>jake is smellybutt (upload images here)</h2>
+   <div class="main-card">
+      <form action="/upload" method="post" enctype="multipart/form-data">
+         <input type="file" name="image">
+         <button type="submit">Upload</button>
+      </form>
+   </div>
+
+   <h2>jake is poopyhead (recent images)</h2>
+   <div>
+      {{#each images}}
+      <div class="aux-card">
+         <img src="/uploads/{{this.square}}" alt="Square Image">
+      </div>
+      {{/each}}
+   </div>
+</div>
